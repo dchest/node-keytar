@@ -25,3 +25,17 @@ On Windows:
 SET NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX
 npm run publish-binaries-windows
 ```
+
+Put all the binaries into `lib/binding/Release`:
+
+```
+lib/
+├── binding
+│   └── Release
+│       ├── electron-v1.6-darwin-x64
+│       │   └── keytar.node
+│       ├── node-v51-darwin-x64
+│       │   └── keytar.node
+│       └── node-v51-linux-x64
+└── keytar.js
+```

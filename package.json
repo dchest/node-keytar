@@ -26,7 +26,7 @@
   },
   "scripts": {
     "xinstall": "node-pre-gyp install --fallback-to-build",
-    "install": "npm run install-linux && npm run install-mac && npm run install-windows-ia32 && npm run install-windows-x64",
+    "xxinstall": "npm run install-linux && npm run install-mac && npm run install-windows-ia32 && npm run install-windows-x64",
     "install-mac": "node-pre-gyp install --target_platform=darwin --target_arch=x64",
     "install-linux": "node-pre-gyp install --target_platform=linux --target_arch=x64",
     "install-windows-ia32": "node-pre-gyp install --target_platform=win32 --target_arch=ia32",
