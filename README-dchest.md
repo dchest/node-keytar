@@ -22,5 +22,6 @@ NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX npm run publish-binaries-linux
 On Windows:
 
 ```
-NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX npm run publish-binaries-windows
+SET NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX
+npm run publish-binaries-windows
 ```
