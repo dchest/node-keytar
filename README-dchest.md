@@ -1,14 +1,9 @@
 ## Creating binaries
 
-First of all, in `package.json`, rename "xinstall" to "install",
-and vice-versa.
-
-Tag release, e.g. `npm version minor` and push it: `git push && git push --tags`.
-
 On Mac:
 
 ```
-NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX npm run publish-binaries-mac
+npm run build-mac
 ```
 
 On Linux:
@@ -16,26 +11,28 @@ On Linux:
 Make sure to install libsecret headers: `sudo apt-get install libsecret-1-dev`.
 
 ```
-NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX npm run publish-binaries-linux
+npm run build-mac
 ```
 
 On Windows:
 
 ```
-SET NODE_PRE_GYP_GITHUB_TOKEN=XXXXXX
-npm run publish-binaries-windows
+npm run build-windows
 ```
 
-Put all the binaries into `lib/binding/Release`:
+Put all the binaries into `lib/binding/Release` in `{platform}-{arch}` directories:
 
 ```
-lib/
+lib
 ├── binding
 │   └── Release
-│       ├── electron-v1.6-darwin-x64
+│       ├── darwin-x64
 │       │   └── keytar.node
-│       ├── node-v51-darwin-x64
+│       ├── linux-x64
 │       │   └── keytar.node
-│       └── node-v51-linux-x64
+│       ├── win32-ia32
+│       │   └── keytar.node
+│       └── win32-x64
+│           └── keytar.node
 └── keytar.js
 ```
