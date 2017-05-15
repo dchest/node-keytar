@@ -38,7 +38,7 @@
     "build-windows-x64": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=%npm_package_config_electron% --target_platform=win32 --target_arch=x64",
     "publish-binaries-mac": "npm run build-mac && node-pre-gyp-github publish",
     "publish-binaries-linux": "npm run build-linux && node-pre-gyp-github publish",
-    "publish-binaries-windows": "npm run build-windows-ia32 && npm run build-windows-x64 && node-pre-gyp-github publish",
+    "publish-binaries-windows": "npm run build-windows-ia32 &&  node-pre-gyp-github publish && npm run build-windows-x64 && node-pre-gyp-github publish",
     "lint": "npm run cpplint",
     "cpplint": "node-cpplint --filters legal-copyright,build-include,build-namespaces src/*.cc",
     "test": "npm run lint && npm build . && mocha --compilers js:babel-core/register spec/"
