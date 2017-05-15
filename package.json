@@ -6,10 +6,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/atom/node-keytar.git"
+    "url": "https://github.com/dchest/node-keytar.git"
   },
   "bugs": {
-    "url": "https://github.com/atom/node-keytar/issues"
+    "url": "https://github.com/dchest/node-keytar/issues"
   },
   "homepage": "http://atom.github.io/node-keytar",
   "keywords": [
@@ -21,10 +21,29 @@
     "vault",
     "credential vault"
   ],
+  "config": {
+    "electron": "1.6.7"
+  },
   "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build",
+    "prepublish": "npm ls",
+    "build-mac": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=$npm_package_config_electron --target_platform=darwin --target_arch=x64",
+    "build-linux": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=$npm_package_config_electron --target_platform=linux --target_arch=x64",
+    "build-windows-ia32": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=$npm_package_config_electron --target_platform=win32 --target_arch=ia32",
+    "build-windows-x64": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=$npm_package_config_electron --target_platform=win32 --target_arch=x64",
+    "publish-binaries-mac": "npm run build-mac && node-pre-gyp-github publish",
+    "publish-binaries-linux": "npm run build-linux && node-pre-gyp-github publish",
+    "publish-binaries-windows": "npm run build-windows-ia32 && npm run build-windows-x64 && node-pre-gyp-github publish",
     "lint": "npm run cpplint",
     "cpplint": "node-cpplint --filters legal-copyright,build-include,build-namespaces src/*.cc",
     "test": "npm run lint && npm build . && mocha --compilers js:babel-core/register spec/"
+  },
+  "binary": {
+    "module_name": "keytar",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+    "host": "https://github.com/dchest/node-keytar/releases/download/",
+    "remote_path": "{version}"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -32,9 +51,13 @@
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
     "node-cpplint": "~0.1.5",
-    "node-gyp": "^3.6.0"
+    "node-pre-gyp-github": "^1.3.1"
   },
+  "bundledDependencies": [
+    "node-pre-gyp"
+  ],
   "dependencies": {
-    "nan": "2.5.1"
+    "nan": "2.5.1",
+    "node-pre-gyp": "^0.6.34"
   }
 }
