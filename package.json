@@ -25,7 +25,10 @@
     "electron": "1.6.7"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
+    "xinstall": "node-pre-gyp install --fallback-to-build",
+    "install": "npm run install-linux && npm run install-mac",
+    "install-mac": "node-pre-gyp install --target_platform=darwin --target_arch=x64",
+    "install-linux": "node-pre-gyp install --target_platform=linux --target_arch=x64",
     "prepublish": "npm ls",
     "build-mac": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=$npm_package_config_electron --target_platform=darwin --target_arch=x64",
     "build-linux": "node-pre-gyp configure rebuild package --build-from-source --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=$npm_package_config_electron --target_platform=linux --target_arch=x64",

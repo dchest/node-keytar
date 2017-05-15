@@ -1,5 +1,10 @@
 ## Creating binaries
 
+First of all, in `package.json`, rename "xinstall" to "install",
+and vice-versa.
+
+Tag release, e.g. `npm version minor` and push it: `git push && git push --tags`.
+
 On Mac:
 
 ```
