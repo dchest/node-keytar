@@ -10,8 +10,16 @@ On Linux:
 
 Make sure to install libsecret headers: `sudo apt-get install libsecret-1-dev`.
 
+Linux x86_64:
+
 ```
-npm run build-mac
+npm run build-linux
+```
+
+Linux arm (Raspberry Pi):
+
+```
+npm run build-linux-arm
 ```
 
 On Windows:
