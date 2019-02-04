@@ -35,7 +35,7 @@ NAN_METHOD(FindPassword) {
   Nan::AsyncQueueWorker(worker);
 }
 
-void Init(v8::Handle<v8::Object> exports) {
+void Init(v8::Local<v8::Object> exports) {
   Nan::SetMethod(exports, "getPassword", GetPassword);
   Nan::SetMethod(exports, "setPassword", SetPassword);
   Nan::SetMethod(exports, "deletePassword", DeletePassword);
