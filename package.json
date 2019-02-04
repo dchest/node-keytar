@@ -22,7 +22,7 @@
     "credential vault"
   ],
   "config": {
-    "electron": "3.0.2"
+    "electron": "4.0.4"
   },
   "scripts": {
     "install": "echo OK",
